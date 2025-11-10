@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SJ Assistant</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>SJ Assistant</h1>
+      <section class="preferences" aria-label="Preference Controls">
+        <label class="toggle" for="theme-toggle">
+          <span>Dark theme</span>
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider" aria-hidden="true"></span>
+        </label>
+      </section>
+    </header>
+
+    <main class="layout">
+      <section class="panel chat" aria-label="Chat Area">
+        <header>
+          <h2>Conversation</h2>
+        </header>
+        <div id="chat-log" class="chat-log" role="log" aria-live="polite"></div>
+        <form id="chat-form" class="chat-form" autocomplete="off">
+          <label class="sr-only" for="chat-input">Send a message</label>
+          <textarea
+            id="chat-input"
+            name="message"
+            rows="3"
+            placeholder="Type your message..."
+            required
+          ></textarea>
+          <div class="chat-actions">
+            <button type="submit">Send</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel suggestions" aria-label="Personalized Suggestions">
+        <header>
+          <h2>Suggestions</h2>
+          <button id="refresh-suggestions" type="button" title="Refresh suggestions">
+            Refresh
+          </button>
+        </header>
+        <div id="suggestions-container" class="suggestions-list"></div>
+      </section>
+
+      <section class="panel knowledge" aria-label="Knowledge Search">
+        <header>
+          <h2>Knowledge Retrieval</h2>
+        </header>
+        <form id="knowledge-form" class="knowledge-form" autocomplete="off">
+          <label class="sr-only" for="knowledge-query">Enter a knowledge query</label>
+          <input
+            id="knowledge-query"
+            type="text"
+            name="query"
+            placeholder="Search the knowledge base..."
+            required
+          />
+          <button type="submit">Search</button>
+        </form>
+        <div id="knowledge-results" class="knowledge-results" aria-live="polite"></div>
+      </section>
+
+      <section class="panel data" aria-label="Data Management">
+        <header>
+          <h2>Data Management</h2>
+        </header>
+        <div class="data-actions">
+          <button id="export-data" type="button">Export data</button>
+          <button id="clear-history" type="button">Clear conversation history</button>
+          <button id="clear-preferences" type="button">Clear preferences</button>
+        </div>
+        <form id="api-key-form" class="api-key-form" autocomplete="off">
+          <label for="api-key-input">API key</label>
+          <input
+            id="api-key-input"
+            type="password"
+            name="apiKey"
+            placeholder="Enter API key"
+          />
+          <div class="api-actions">
+            <button type="submit">Save</button>
+            <button id="reset-api-key" type="button">Reset</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <template id="message-template">
+      <article class="message">
+        <header>
+          <span class="message-role"></span>
+          <time class="message-time"></time>
+        </header>
+        <p class="message-text"></p>
+      </article>
+    </template>
+
+    <template id="suggestion-template">
+      <article class="suggestion-item">
+        <h3 class="suggestion-title"></h3>
+        <p class="suggestion-body"></p>
+      </article>
+    </template>
+
+    <template id="knowledge-result-template">
+      <article class="knowledge-item">
+        <h3 class="knowledge-title"></h3>
+        <p class="knowledge-snippet"></p>
+      </article>
+    </template>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
