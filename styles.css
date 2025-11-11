@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+  color: #1f2933;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  display: grid;
+  gap: 1.75rem;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  padding: 1.5rem;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+}
+
+.stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
+label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+button {
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(120deg, #2563eb, #7c3aed);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.2);
+}
+
+button.secondary {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #1f2937;
+  box-shadow: none;
+}
+
+.button-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-start;
+}
+
+.loading {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #7c3aed;
+}
+
+.loading.hidden {
+  display: none;
+}
+
+.status {
+  margin-top: 0.75rem;
+  min-height: 1.25rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.status.error {
+  color: #dc2626;
+}
+
+.status.success {
+  color: #16a34a;
+}
+
+.transcript {
+  margin-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  display: grid;
+  gap: 0.85rem;
+  padding-top: 1rem;
+}
+
+.message {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: #f1f5f9;
+  position: relative;
+  line-height: 1.5;
+}
+
+.message.user {
+  background: #dbeafe;
+  align-self: start;
+}
+
+.message.assistant {
+  background: #ede9fe;
+}
+
+.message-title {
+  margin: 0 0 0.35rem 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #475569;
+}
+
+.message-body {
+  margin: 0;
+  white-space: pre-wrap;
+}

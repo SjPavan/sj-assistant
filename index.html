@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gemini API Client Playground</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Gemini API Client Playground</h1>
+
+      <section class="card" id="api-key-card">
+        <h2>Configure API Key</h2>
+        <form id="api-key-form" class="stack">
+          <label for="api-key-input">Google Generative AI API key</label>
+          <input id="api-key-input" name="api-key" type="password" autocomplete="off" placeholder="AI..." required />
+          <div class="button-row">
+            <button type="submit">Save key</button>
+            <button type="button" id="api-key-clear" class="secondary">Clear</button>
+          </div>
+        </form>
+        <p id="api-key-status" role="status" class="status"></p>
+      </section>
+
+      <section class="card" id="chat-card">
+        <h2>Chat Completion</h2>
+        <form id="chat-form" class="stack">
+          <label for="chat-input">Message</label>
+          <textarea id="chat-input" name="message" rows="3" placeholder="Ask something..." required></textarea>
+
+          <label for="chat-knowledge">Optional knowledge context</label>
+          <textarea id="chat-knowledge" name="knowledge" rows="3" placeholder="Add knowledge snippets separated by blank lines"></textarea>
+
+          <button type="submit">Send message</button>
+        </form>
+        <div id="chat-loading" class="loading hidden">Generating response…</div>
+        <div id="chat-output" class="transcript" aria-live="polite"></div>
+      </section>
+
+      <section class="card" id="knowledge-card">
+        <h2>Knowledge Search</h2>
+        <form id="knowledge-form" class="stack">
+          <label for="knowledge-query">Query</label>
+          <input id="knowledge-query" name="query" type="text" placeholder="Ask about something specific" required />
+          <label for="knowledge-context">Optional knowledge context</label>
+          <textarea id="knowledge-context" name="knowledgeContext" rows="3" placeholder="Context snippets"></textarea>
+          <button type="submit">Search knowledge</button>
+        </form>
+        <div id="knowledge-loading" class="loading hidden">Searching…</div>
+        <div id="knowledge-output" class="transcript" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/ui.js"></script>
+  </body>
+</html>
