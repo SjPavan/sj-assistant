@@ -27,6 +27,7 @@ yarn-error.log
 # Dependencies (if using npm/yarn in the future)
 node_modules/
 package-lock.json
+pnpm-lock.yaml
 yarn.lock
 
 # Build artifacts (if adding build tools in the future)

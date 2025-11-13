@@ -27,7 +27,15 @@ SJ Assistant is a responsive web-based chat interface that integrates with Googl
 │   ├── storage.js         # LocalStorage and data persistence utilities
 │   ├── aiClient.js        # Gemini AI API integration
 │   └── suggestions.js     # Suggestion generation and management
+├── src/                   # Legacy modules (being migrated)
+│   ├── aiClient.js        # Advanced API client with retry/safety
+│   ├── requestBuilder.js  # Request payload preparation
+│   ├── storage.js         # Enhanced localStorage utilities
+│   ├── streaming.js       # Response streaming utilities
+│   └── ui.js              # Legacy UI components
+├── styles.css             # Legacy stylesheet
 ├── README.md              # This file
+└── .gitignore             # Version control ignore patterns
 ```
 
 ## Setup Instructions
@@ -160,12 +168,22 @@ cd sj-assistant
 
 The application is organized into separate, independent modules:
 
-- **`app.js`**: Main orchestrator - handles UI rendering, event delegation, and state management
-- **`storage.js`**: Data persistence - handles localStorage operations for chat history and preferences
-- **`aiClient.js`**: API communication - manages all interactions with Gemini AI
-- **`suggestions.js`**: Suggestion engine - generates context-aware suggestions
+- **`js/app.js`**: Main orchestrator - handles UI rendering, event delegation, and state management
+- **`js/storage.js`**: Data persistence - handles localStorage operations for chat history and preferences
+- **`js/aiClient.js`**: API communication - manages all interactions with Gemini AI
+- **`js/suggestions.js`**: Suggestion engine - generates context-aware suggestions
 
 Each module is self-contained and communicates through a simple interface, making it easy to modify, test, or replace individual components.
+
+### Legacy Modules (src/)
+
+The `src/` directory contains more advanced modules that are being migrated:
+
+- **`src/aiClient.js`**: Advanced API client with retry logic, safety filters, and error handling
+- **`src/requestBuilder.js`**: Request payload preparation with conversation history and knowledge context
+- **`src/storage.js`**: Enhanced localStorage utilities with API key validation
+- **`src/streaming.js`**: Response streaming utilities for progressive rendering
+- **`src/ui.js`**: Legacy UI components and event handling
 
 ### State Management
 
