@@ -9,6 +9,7 @@ SJ Assistant is a responsive web-based chat interface that integrates with Googl
 ### Features
 
 - **AI-Powered Chat**: Real-time conversation with Gemini AI
+- **🌐 Website Analyzer**: Extract business intelligence from any website
 - **Responsive Design**: Seamlessly adapts from desktop to mobile devices
 - **Knowledge Search Panel**: Search and retrieve information from your knowledge base
 - **Smart Suggestions**: Context-aware suggestions for better conversations
@@ -26,7 +27,8 @@ SJ Assistant is a responsive web-based chat interface that integrates with Googl
 │   ├── app.js             # Main application logic and orchestration
 │   ├── storage.js         # LocalStorage and data persistence utilities
 │   ├── aiClient.js        # Gemini AI API integration
-│   └── suggestions.js     # Suggestion generation and management
+│   ├── suggestions.js     # Suggestion generation and management
+│   └── websiteAnalyzer.js # Website content analysis and business intelligence
 ├── src/                   # Legacy modules (being migrated)
 │   ├── aiClient.js        # Advanced API client with retry/safety
 │   ├── requestBuilder.js  # Request payload preparation
@@ -134,6 +136,74 @@ cd sj-assistant
 - **Export History**: Download your chat history as a JSON file
 - **Import History**: Load a previously exported JSON file
 - **Clear History**: Remove all chat history (warning: this cannot be undone)
+
+### 🌐 Website Analyzer
+
+The SJ Assistant includes a powerful website analyzer that extracts business intelligence from any website using AI.
+
+#### How to Use
+
+1. **Enter a website URL** in the chat with analysis keywords like:
+   - "Analyze this website: https://example.com"
+   - "Review https://company.com and extract business information"
+   - "Examine https://startup.io for business intelligence"
+
+2. **Supported analysis requests**:
+   - `analyze website`
+   - `review site`
+   - `examine business`
+   - `extract information`
+   - `evaluate company`
+
+3. **What gets extracted**:
+   - 🏢 **Company Name**: The official business name
+   - 📋 **Business Description**: 2-3 sentence overview of what the company does
+   - 🏭 **Industry Classification**: Industry sector (Technology, Healthcare, Finance, etc.)
+   - 🎯 **Business Type**: B2B (business-to-business) or B2C (business-to-consumer)
+   - 📂 **Category**: Specific business category (SaaS, E-commerce, Consulting, etc.)
+   - ✨ **Marketable Summary**: Concise 3-5 word compelling summary
+
+#### Example Usage
+
+```
+User: 🌐 Analyze website: https://www.apple.com
+
+Assistant: 🌐 **Website Business Intelligence Analysis**
+
+🏢 **URL:** https://www.apple.com
+
+---
+
+🏢 **Company Name**
+Apple Inc.
+
+📋 **Business Description**
+Apple Inc. designs, manufactures, and markets consumer electronics, software, and online services. The company is known for its innovative products including iPhone, iPad, Mac computers, and various digital services.
+
+💻 **Industry Classification**
+Technology
+
+🏢 **Business Model**
+B2C
+
+📂 **Business Category**
+Consumer Electronics
+
+✨ **Marketable Summary**
+**Innovative Consumer Technology**
+
+---
+
+*Analysis completed using AI-powered business intelligence extraction*
+```
+
+#### Technical Details
+
+- Uses multiple CORS proxy services to fetch website content
+- Extracts text content from HTML, removing navigation, footers, and scripts
+- Leverages Gemini AI to analyze and structure business information
+- Validates and formats all extracted data for consistency
+- Handles errors gracefully with informative error messages
 
 ## Browser Compatibility
 

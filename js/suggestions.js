@@ -10,6 +10,7 @@ const Suggestions = {
      */
     getDefaultSuggestions() {
         return [
+            '🌐 Analyze website: https://example.com',
             '💡 Load sample conversation',
             '🔍 Ask a sample question',
             '⚙️ Show system info'
@@ -50,11 +51,13 @@ const Suggestions = {
      */
     getExamplePrompts() {
         return [
+            '🌐 Analyze this website: https://www.apple.com',
             'Explain quantum computing in simple terms',
             'What are the benefits of renewable energy?',
             'How does machine learning work?',
             'Write a short Python function to calculate factorial',
-            'What is the capital of France?'
+            'What is the capital of France?',
+            '🔍 Extract business info from: https://www.microsoft.com'
         ];
     }
 };
