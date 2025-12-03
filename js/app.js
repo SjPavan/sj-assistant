@@ -148,6 +148,16 @@ const App = {
             return;
         }
 
+        // Check if this is a website analysis request
+        const url = WebsiteAnalyzer.extractUrl(message);
+        const isAnalysisRequest = WebsiteAnalyzer.isAnalysisRequest(message);
+
+        // Validate URL if this is an analysis request
+        if (isAnalysisRequest && url && !WebsiteAnalyzer.isValidUrl(url)) {
+            this._showError('Invalid URL format. Please provide a valid HTTP or HTTPS URL.');
+            return;
+        }
+
         // Add user message to state and clear input
         this.state.messages.push({
             role: 'user',
@@ -174,8 +184,15 @@ const App = {
         }
 
         try {
-            // Get AI response
-            const response = await AIClient.sendMessage(message, this.state.messages.slice(0, -1));
+            let response;
+
+            if (isAnalysisRequest && url) {
+                // Handle website analysis
+                response = await WebsiteAnalyzer.analyzeWebsite(url);
+            } else {
+                // Handle regular AI chat
+                response = await AIClient.sendMessage(message, this.state.messages.slice(0, -1));
+            }
 
             // Add AI response to state
             this.state.messages.push({
@@ -193,10 +210,10 @@ const App = {
             // Scroll to bottom
             this._scrollChatToBottom();
         } catch (error) {
-            this._showError(`Failed to get AI response: ${error.message}`);
+            this._showError(`Failed to get response: ${error.message}`);
             console.error('Error:', error);
 
-            // Remove the user message if AI failed
+            // Remove the user message if failed
             this.state.messages.pop();
             Storage.saveChatHistory(this.state.messages);
             this._render();
